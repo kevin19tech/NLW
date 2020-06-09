@@ -1,0 +1,103 @@
+/*Tela de pesquisa*/
+#modal {
+    /*Transformar em alfa -> dicionar duas letras ou números*/
+    background-color: #0E0A14ef;
+    height: 100vh;
+    width: 100vw;
+
+    /*Mover*//*Colocar o "Papel em cima"*/
+
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: 400ms;
+}
+/*Estou dizendo que o modal tem uma classe hide*/
+#modal.hide {
+    display: none;/*Não vai aparecer*/
+}
+
+#modal .content {
+    color: white;
+    width: 420px;
+}
+
+#modal .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 48px;
+}
+
+#modal .header a {
+    background-image: url(/assets/x.svg);
+    width: 20px;
+    height: 20px;
+    display: flex;
+
+    /*Estrategia para o texto fechar*/
+    font-size: 0.01px;
+
+}
+
+#modal .header h1{
+    color: white;
+    font-size: 36px;
+    line-height: 42px;
+
+}
+
+#modal form label {
+    font-size:14px;
+    line-height: 16px;
+    display: block;/*Para o label separar pelo margin, pegar o margin*/
+    margin-bottom: 8px;
+}
+
+
+#modal form .field {
+    /*O botão de busca ficou com o mesmo tamanho*/
+    display: flex;
+}
+
+#modal form input {
+    /*flex -> pegar todo o espaço*/
+    flex: 1;
+    background-color: #f0f0f5;/*Criar variável*/
+    /*Transformar num botão só*/
+    border-radius: 8px 0 0 8px;
+    border: 0;
+    padding: 16px 24px;
+    font-size: 16px;
+    color: #6c6c80;
+    
+}
+
+#modal form button {
+    width: 72px;
+    height: 72px;
+
+    background-color: var(--primary-color);
+    border: 0;
+    border-radius: 0 8px 8px 0;
+}
+
+#modal form button:hover {
+   background-color: #2fb85e; 
+}
+
+/*Modal point created */
+#modal.point .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+#modal.point h1 {
+    color:white;
+    margin-top: 32px;
+}

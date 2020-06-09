@@ -1,0 +1,179 @@
+{% extends "layout.html" %}
+
+{% set pageId = "page-create-point" %}
+
+{% block title %}
+    <title>Criar um ponto de coleta</title>
+{% endblock title %}
+
+{% block styles %}
+    <link rel="stylesheet" href="/styles/create-point.css">
+    <link rel="stylesheet" href="/styles/modal.css">
+
+{% endblock styles %}
+
+
+
+    {% block content %}
+
+        {% include "partials/page-header.html" %}
+
+        <!--Formulário-->
+        <form action="/savepoint" method="POST">
+
+            <h1>Cadastro do ponto de coleta</h1>
+
+            <!--Agrupar campos-->
+            <fieldset>
+                <legend>
+                    <h2>Dados da entidade</h2>
+
+                </legend>
+
+                <div class="field-group">
+
+                <div class="field">
+                    <label for="">Nome da entidade</label>
+                    <input type="text" name="name" required="required">
+
+                </div>
+
+                <div class="field">
+                    <label for="">Imagem da entidade</label>
+                    <input 
+                    type="url" name="image" 
+                    placeholder="http://"
+                    required="required">
+
+                </div>
+
+                </div>
+                
+
+                <!--Dois na mesma linha-->
+                <div class="field-group">
+
+                    <div class="field">
+                        <label for="address">Endereço</label>
+                        <input type="text" name="address" required="required">
+                    </div>
+                    <div class="field">
+
+                        <label for="address2">Número/Complemento</label>
+                        <input type="text" name="address2" required="required">
+
+                    </div>
+
+                </div>
+
+                <div class="field-group">
+
+                    <div class="field">
+
+                        <label for="state">Estado</label>
+                        <!--Escolher Estado-->
+                        <select name="uf" required="required">
+                            <option value="">Selecione o estado</option>
+
+                        </select>
+
+                        <!--Tirar o Estado do formulario-->
+                        <input type="hidden" name="state" required="required">
+                    </div>
+
+                    <div class="field">
+
+                        <label for="city">Cidade</label>
+                        <!--Escolher Cidade-->
+                        <!--Ocultar cidade - disabled-->
+                        <select name="city" disabled="disabled" required="required">
+                            <option value="" required="required">Selecione a cidade</option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </fieldset>
+
+            <fieldset>
+
+                <h2>Itens de coleta</h2>
+                <span>Selecione um ou mais itens</span>
+
+                <div class="items-grid">
+                    <li data-id="Lâmpadas">
+                        <!--Fundo é a li-->
+                        <!--data-id numerada, usada no js-->
+                        <img src="assets/lampadas.svg" alt="Lâmpadas">
+                        <span>Lâmpadas</span>
+                        <!--span é o título-->
+                    </li>
+
+                    <li data-id="Pilhas e Baterias">
+                        <!--Fundo é a li-->
+                        <img src="assets/baterias.svg" alt="Pilhas e Baterias">
+                        <span>Pilhas e Baterias</span>
+                        <!--span é o título-->
+                    </li>
+
+                    <li data-id="Papeis e papelão">
+                        <!--Fundo é a li-->
+                        <img src="assets/papeis-papelao.svg" alt="Papéis e papelão">
+                        <span>Papeis e papelão</span>
+                        <!--span é o título-->
+                    </li>
+
+                    <li data-id="Resíduos Eletrônicos">
+                        <!--Fundo é a li-->
+                        <img src="assets/eletronicos.svg" alt="Resíduos Eletrônicos">
+                        <span>Resíduos Eletrônicos</span>
+                        <!--span é o título-->
+                    </li>
+
+                    <li data-id="Resíduos Orgânicos">
+                        <!--Fundo é a li-->
+                        <img src="assets/organicos.svg" alt="Resíduos Orgânicos">
+                        <span>Resíduos Orgânicos</span>
+                        <!--span é o título-->
+                    </li>
+
+                    <li data-id="Óleo de Cozinha">
+                        <!--Fundo é a li-->
+                        <img src="assets/oleo.svg" alt="Óleo de Cozinha">
+                        <span>Óleo de Cozinha</span>
+                        <!--span é o título-->
+                    </li>
+
+                </div>
+
+                <!--Mandar os itens-->
+
+                <input type="hidden" name="items">
+
+            </fieldset>
+            <button type="submit">Cadastrar ponto de coleta</button>
+
+        </form>
+
+
+   
+        
+
+    {% endblock content %}
+
+
+{% block modal %}
+
+      {% if saved %}
+
+        {%include "partials/point-created.html"%}
+
+    {% endif %}
+
+{% endblock modal %}
+    <!--Cabeçalho-->
+
+    {% block scripts %}
+        <script src="/scripts/create-point.js"></script>
+    {% endblock scripts %}
